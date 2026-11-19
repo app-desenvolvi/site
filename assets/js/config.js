@@ -20,10 +20,13 @@ window.DV_CONFIG = {
 
   /* Página de contatos (contato.html), para usar como link da bio das redes sociais.
      Campo vazio = o botão não aparece. O WhatsApp e a tabela de preços de cada unidade ficam em "unidades".
-     experimentalUrl: formulário da aula experimental (cria o lead no app). Vazio = o botão
-     "Agendar aula experimental" abre a escolha de unidade e segue pelo WhatsApp. */
+     experimentalUrl: página da aula experimental (cria o lead no app). A página de contatos mostra
+     um botão por unidade e acrescenta ?u=<id da unidade> (jf, sjc) para o formulário já abrir na unidade certa.
+     Vazio = um botão "Agendar aula experimental" que abre a escolha de unidade e segue pelo WhatsApp. */
   contato: {
-    experimentalUrl: '',
+    experimentalUrl: 'aula-experimental.html',
+    /* endereço do app (Apps Script) que recebe o pedido da página aula-experimental.html e cria o lead */
+    experimentalApi: 'https://script.google.com/macros/s/AKfycbytQm1L6r_0wrZM1mXiTO2HFM_DAfd2tDEF6h7OVxYS0xWfUG5j0y_zGVz-zOLyT1w-/exec',
     matriculaUrl: 'https://matricula.desenvolvi.site',
     tiktok: '',
     facebook: ''

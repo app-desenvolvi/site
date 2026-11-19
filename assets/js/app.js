@@ -135,14 +135,20 @@
       return `<a class="link-btn${it.destaque ? ' destaque' : ''}" href="${escapeHtml(it.url)}"${atr} data-evento="contato_link" data-detalhe="${escapeHtml(it.id)}">
         <span class="link-ic">${it.icone}</span><span class="link-txt">${escapeHtml(it.texto)}</span></a>`;
     }
-    var experimental = urlSegura(c.experimentalUrl);
+    /* página da aula experimental: endereço completo (https://) ou página do próprio site (ex.: aula-experimental.html) */
+    var expBase = String(c.experimentalUrl || '').trim();
+    var experimental = /^https?:\/\/[^\s"'<>]+$/i.test(expBase) || /^[\w\-\/]+\.html$/i.test(expBase) ? expBase : '';
+    function linkExperimental(u) {
+      return experimental + (experimental.indexOf('?') >= 0 ? '&' : '?') + 'u=' + encodeURIComponent(String(u.id).trim().toLowerCase());
+    }
     var grupos = [
-      { titulo: '', itens: [
-        /* com o formulário em config.js, abre o formulário; sem ele, abre a escolha de unidade e segue pelo WhatsApp */
-        experimental
-          ? { id: 'experimental', texto: 'Agendar aula experimental', url: experimental, icone: ICONES.agenda, destaque: true }
-          : (us.length ? { id: 'experimental', texto: 'Agendar aula experimental', url: '#', agendar: 'experimental', icone: ICONES.agenda, destaque: true } : null)
-      ] },
+      /* com a página em config.js: um botão por unidade, que abre o formulário já na unidade (?u=jf, ?u=sjc);
+         sem ela: um botão que abre a escolha de unidade e segue pelo WhatsApp */
+      experimental
+        ? { titulo: 'Agendar aula experimental', itens: us.map(function (u) {
+            return { id: 'experimental_' + u.id, texto: u.nome + (u.uf ? ' (' + u.uf + ')' : ''), url: linkExperimental(u), icone: ICONES.agenda, destaque: true, externo: !/^[\w\-\/]+\.html/i.test(experimental) };
+          }) }
+        : { titulo: '', itens: [us.length ? { id: 'experimental', texto: 'Agendar aula experimental', url: '#', agendar: 'experimental', icone: ICONES.agenda, destaque: true } : null] },
       { titulo: 'WhatsApp', itens: us.map(function (u) {
         return { id: 'whatsapp_' + u.id, texto: u.nome + (u.uf ? ' (' + u.uf + ')' : ''), url: whatsapp(u, 'contato'), icone: ICONE_WHATS };
       }) },
