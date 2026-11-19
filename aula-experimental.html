@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agende sua aula experimental · DesenvolVi</title>
+<meta name="description" content="Peça a aula experimental na DesenvolVi: conte quem vai participar e em que dias e períodos vocês podem. A equipe confirma o horário pelo WhatsApp.">
+<meta name="theme-color" content="#9966FF">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Agende sua aula experimental · DesenvolVi">
+<meta property="og:description" content="Conte quem vai participar e em que dias e períodos vocês podem. A equipe confirma o horário pelo WhatsApp.">
+<meta property="og:image" content="assets/img/icone-app-512.png">
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/baloo-2-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/roboto-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=6">
+<link rel="stylesheet" href="assets/css/formulario.css?v=1">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="wrap hd">
+    <a class="marca" href="index.html" aria-label="DesenvolVi, Centro de Desenvolvimento Infantil, página inicial"><img src="assets/img/logo-desenvolvi.png" alt="DesenvolVi, Centro de Desenvolvimento Infantil" width="276" height="70"></a>
+    <nav class="menu" id="menu" aria-label="Menu principal">
+      <ul><li><a href="quem-somos.html">Quem somos</a></li><li><a href="index.html#servicos">O que fazemos</a></li><li><a href="como-fazemos.html">Como fazemos</a></li><li><a href="index.html#unidades">Onde nos encontrar</a></li><li><a href="o-que-falam.html">O que falam da gente</a></li></ul>
+      <a class="lnk-app" href="#" data-app hidden>Entrar no app</a>
+    </nav>
+    <div class="hd-acoes">
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="pg-topo lilas">
+    <span class="decor" aria-hidden="true"><span class="bolha b1"></span><span class="bolha b2"></span></span>
+    <div class="wrap pg-topo-in">
+      <div>
+        <h1>Aula experimental</h1>
+        <p class="lead">Conte quem vai participar e em quais dias e períodos vocês podem vir. A equipe da unidade confirma o horário pelo WhatsApp.</p>
+      </div>
+      <div class="pg-adesivos" aria-hidden="true">
+        <img src="assets/img/pilulas/explorar.svg" alt="" width="190" height="40">
+        <img src="assets/img/pilulas/incentivar.svg" alt="" width="190" height="40">
+      </div>
+    </div>
+    <svg class="onda o-branco onda-base" viewBox="0 0 1440 96" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,48 C220,92 420,8 720,40 C1010,72 1220,18 1440,44 L1440,96 L0,96 Z" fill="currentColor"/></svg>
+  </section>
+
+  <section class="fm-secao">
+    <div class="wrap fm-wrap">
+
+      <noscript><p class="fm-aviso erro">Para enviar o pedido é preciso ativar o JavaScript. Se preferir, fale com a gente pelo <a href="contato.html">WhatsApp da unidade</a>.</p></noscript>
+
+      <!-- 1) sem unidade no link: escolher -->
+      <div id="fm-escolha" hidden>
+        <h2 class="fm-tit">Em qual unidade?</h2>
+        <p class="fm-dica">Escolha a unidade em que você quer fazer a aula experimental.</p>
+        <ul class="fm-escolha" id="fm-escolha-lista"></ul>
+      </div>
+
+      <!-- 2) formulário -->
+      <div id="fm-form-area" hidden>
+        <p class="fm-un"><span id="fm-un-nome"></span><button type="button" id="fm-trocar" hidden>trocar</button></p>
+
+        <div id="fm-carregando" class="fm-carregando" role="status"><span class="fm-giro" aria-hidden="true"></span>Preparando o formulário...</div>
+        <div id="fm-falha" class="fm-aviso erro" role="alert" hidden></div>
+
+        <form id="fm-form" novalidate hidden autocomplete="on">
+          <div class="fm-aviso erro" id="fm-resumo-erros" role="alert" hidden></div>
+
+          <fieldset class="fm-bloco">
+            <legend>Quem vai participar</legend>
+            <div class="fm-campo" id="c-crianca">
+              <label for="f-crianca">Nome da criança</label>
+              <input type="text" id="f-crianca" name="crianca" maxlength="80" autocomplete="off" required>
+              <p class="fm-erro" hidden></p>
+            </div>
+            <div class="fm-campo" id="c-faixa">
+              <label for="f-faixa">Idade da criança</label>
+              <select id="f-faixa" name="faixa" required><option value="">Escolha...</option></select>
+              <p class="fm-erro" hidden></p>
+            </div>
+          </fieldset>
+
+          <fieldset class="fm-bloco">
+            <legend>Responsável</legend>
+            <div class="fm-campo" id="c-resp">
+              <label for="f-resp">Nome do responsável</label>
+              <input type="text" id="f-resp" name="responsavel" maxlength="80" autocomplete="name" required>
+              <p class="fm-erro" hidden></p>
+            </div>
+            <div class="fm-duas">
+              <div class="fm-campo" id="c-cel">
+                <label for="f-cel">WhatsApp</label>
+                <input type="tel" id="f-cel" name="celular" inputmode="tel" autocomplete="tel-national" placeholder="(00) 00000-0000" maxlength="15" required>
+                <p class="fm-erro" hidden></p>
+              </div>
+              <div class="fm-campo" id="c-origem">
+                <label for="f-origem">Como conheceu a DesenvolVi?</label>
+                <select id="f-origem" name="origem" required><option value="">Escolha...</option></select>
+                <p class="fm-erro" hidden></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="fm-bloco" id="c-matriz">
+            <legend>Quando vocês podem vir?</legend>
+            <p class="fm-dica">Toque em todos os dias e períodos em que podem. Quanto mais opções, mais fácil de encontrar um horário. Toque no nome do dia ou do período para marcar tudo de uma vez.</p>
+            <div class="mx" id="fm-matriz" role="group" aria-label="Dias e períodos disponíveis"></div>
+            <p class="fm-erro" hidden></p>
+          </fieldset>
+
+          <fieldset class="fm-bloco">
+            <legend>Quer nos contar mais alguma coisa?</legend>
+            <div class="fm-campo" id="c-obs">
+              <label for="f-obs">Observações <span class="fm-opc">(opcional)</span></label>
+              <textarea id="f-obs" name="obs" maxlength="300" placeholder="Por exemplo: uma preferência de horário ou algo que a equipe deva saber."></textarea>
+              <p class="fm-contador" id="fm-obs-cont" aria-live="off">0/300</p>
+            </div>
+          </fieldset>
+
+          <!-- campo isca: pessoas não veem; robôs costumam preencher -->
+          <div class="fm-isca" aria-hidden="true"><label>Não preencha este campo<input type="text" id="f-isca" name="site" tabindex="-1" autocomplete="off"></label></div>
+
+          <label class="fm-aceite" id="c-aceite">
+            <input type="checkbox" id="f-aceite" required>
+            <span>Autorizo a DesenvolVi a usar estes dados para entrar em contato comigo sobre a aula experimental (LGPD).</span>
+          </label>
+          <p class="fm-erro" id="c-aceite-erro" hidden></p>
+
+          <button class="btn btn-primary fm-enviar" id="fm-enviar" type="submit">Enviar pedido</button>
+        </form>
+      </div>
+
+      <!-- 3) resultado -->
+      <div id="fm-ok" class="fm-ok" hidden tabindex="-1">
+        <span class="fm-ok-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <h2>Recebemos o seu pedido!</h2>
+        <p id="fm-ok-txt">Agora é só enviar a mensagem pelo WhatsApp da unidade. A equipe responde com o horário disponível.</p>
+        <div class="fm-resumo" id="fm-ok-resumo"></div>
+        <a class="btn btn-primary fm-whats" id="fm-ok-whats" href="#" target="_blank" rel="noopener" data-evento="experimental_whatsapp"></a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap ft">
+    <div class="ft-marca">
+      <img src="assets/img/logo-desenvolvi-escuro.png" alt="DesenvolVi, Centro de Desenvolvimento Infantil" width="276" height="70" loading="lazy">
+      <p>Desenvolvimento infantil com especialistas e com a família junto.</p>
+      <p><a href="#" data-instagram data-usuario>Instagram</a></p>
+    </div>
+    <div>
+      <h2 class="ft-tit">Unidades</h2>
+      <ul class="ft-lista" data-unidades="rodape"></ul>
+    </div>
+    <div>
+      <h2 class="ft-tit">Navegue</h2>
+      <ul class="ft-lista"><li><a href="quem-somos.html">Quem somos</a></li><li><a href="index.html#servicos">O que fazemos</a></li><li><a href="como-fazemos.html">Como fazemos</a></li><li><a href="index.html#unidades">Onde nos encontrar</a></li><li><a href="o-que-falam.html">O que falam da gente</a></li></ul>
+      <p><a href="#" data-app hidden>Entrar no app</a></p>
+    </div>
+    <div class="ft-rede">
+      <h2 class="ft-tit">Rede Primeiros Anos</h2>
+      <p>A DesenvolVi é membro fundador da Rede Primeiros Anos, que reúne profissionais pelo desenvolvimento infantil.</p>
+      <p><a href="#" data-rede>Conheça a Rede</a></p>
+    </div>
+  </div>
+  <div class="wrap ft-base">
+    <img class="faixa" src="assets/img/faixa.svg" alt="" width="200" height="12">
+    <p>© <span id="ano">2026</span> DesenvolVi · Centro de Desenvolvimento Infantil</p>
+  </div>
+</footer>
+
+<dialog class="dlg" id="dlg-agendar" aria-labelledby="dlg-tit">
+  <div class="dlg-caixa">
+    <button class="dlg-fechar" type="button" data-fechar aria-label="Fechar">×</button>
+    <h2 id="dlg-tit">Escolha a unidade</h2>
+    <p>A conversa continua pelo WhatsApp.</p>
+    <ul class="dlg-lista" id="dlg-unidades"></ul>
+  </div>
+</dialog>
+
+<script src="assets/js/config.js?v=6"></script>
+<script src="assets/js/app.js?v=6"></script>
+<script src="assets/js/experimental.js?v=1"></script>
+</body>
+</html>
