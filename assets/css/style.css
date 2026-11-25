@@ -619,3 +619,25 @@ body.pg-links{min-height:100vh;background:linear-gradient(160deg,#A57BFF 0%,var(
 .links-faixa{display:block;margin:var(--space-6) auto var(--space-3);width:160px;height:auto}
 .links-rodape{margin:0;font-size:14px;line-height:20px;color:var(--on-surface-brand)}
 @media (prefers-reduced-motion:reduce){.link-btn{transition:none}.link-btn:hover{transform:none}}
+
+/* ==========================================================================
+   Celular: bordas da tela na cor lilás (em cima, a área da câmera/relógio; embaixo, a barra do navegador)
+   - Android e iPhone até o iOS 18 usam a meta theme-color (#9966FF), que já está em todas as páginas.
+   - No iPhone com iOS 26 o Safari ignora a theme-color e pinta essas áreas com a cor de uma faixa fixa
+     encostada na borda da tela (de ponta a ponta, com pelo menos 3px de altura). Por isso as duas faixas
+     .borda-cel, que só aparecem em telas de toque: a de cima é uma linha lilás de 4px sobre o cabeçalho
+     (no iPhone ela emenda com a área da câmera); a de baixo fica invisível, só para o Safari ler a cor.
+   - viewport-fit=cover (no <meta name="viewport">) deixa o site usar a tela inteira; os env(safe-area-*)
+     evitam que algo fique embaixo da câmera, do recorte lateral (celular deitado) ou da barra de baixo.
+   ========================================================================== */
+html{background-color:var(--brand)}
+body{min-height:100vh;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.site-header{padding-top:env(safe-area-inset-top,0px)}
+.intro-ctrl{right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.borda-cel{display:none}
+@media (hover:none) and (pointer:coarse){
+  .borda-cel{display:block;position:fixed;left:0;right:0;z-index:calc(var(--z-sticky) + 1);background-color:var(--brand);pointer-events:none}
+  .borda-cel.topo{top:0;height:calc(4px + env(safe-area-inset-top,0px))}
+  .borda-cel.base{bottom:0;height:12px;visibility:hidden}
+  .pg-links .borda-cel{visibility:hidden}
+}
